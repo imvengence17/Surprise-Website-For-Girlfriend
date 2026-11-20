@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { surpriseConfig } from '../config/surpriseConfig';
 import { VoiceNotePlayer } from './VoiceNotePlayer';
-import { Heart, ChevronDown, Mail } from 'lucide-react';
+import { Heart, ChevronDown, Mail, ZoomIn, X } from 'lucide-react';
 
 interface LoveLetterProps {
   onNext: () => void;
@@ -11,6 +11,7 @@ interface LoveLetterProps {
 export const LoveLetter: React.FC<LoveLetterProps> = ({ onNext, onAudioPlayChange }) => {
   const { loveLetter, names } = surpriseConfig;
   const [envelopeOpen, setEnvelopeOpen] = useState(true);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   return (
     <section className="relative min-h-screen w-full px-4 py-20 bg-gradient-to-b from-[#FFEBE7] via-[#FFF0F4] to-[#FFF4EF] text-center overflow-hidden">
@@ -43,32 +44,56 @@ export const LoveLetter: React.FC<LoveLetterProps> = ({ onNext, onAudioPlayChang
             </p>
           </div>
         ) : (
-          /* Opened Letter Card (matching video frame 24!) */
-          <div className="w-full bg-white paper-texture rounded-3xl p-6 sm:p-10 shadow-2xl border border-pink-100 text-left relative transition-all duration-700 animate-fadeIn">
-            {/* Wax seal watermark in corner */}
-            <div className="absolute top-4 right-4 opacity-15 pointer-events-none">
-              <Heart className="w-16 h-16 fill-pink-600" />
+          /* Real Love Letter Image Card */
+          <div className="w-full flex flex-col items-center transition-all duration-700 animate-fadeIn">
+            {/* The Letter Image Container */}
+            <div 
+              onClick={() => setIsZoomed(true)}
+              className="relative cursor-pointer group w-full max-w-md bg-white p-3 sm:p-4 rounded-3xl shadow-2xl border-2 border-pink-200/80 hover:shadow-[0_20px_45px_rgba(244,91,145,0.3)] transition-all duration-300 active:scale-99"
+            >
+              {/* Corner Tape Effect */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-amber-100/70 border border-amber-200/60 rounded backdrop-blur-xs shadow-sm transform -rotate-2" />
+
+              {/* The Actual Letter Photograph */}
+              <div className="relative overflow-hidden rounded-2xl bg-pink-50 flex items-center justify-center">
+                <img
+                  src={loveLetter.letterImage}
+                  alt="Love letter for Gelhii"
+                  className="w-full h-auto object-contain rounded-2xl shadow-inner group-hover:scale-[1.01] transition-transform duration-300"
+                />
+
+                {/* Subtle Tap to Zoom Badge */}
+                <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1.5 shadow opacity-80 group-hover:opacity-100 transition-opacity">
+                  <ZoomIn className="w-3.5 h-3.5 text-pink-300" />
+                  <span>Tap to expand</span>
+                </div>
+              </div>
             </div>
+          </div>
+        )}
 
-            {/* Salutation */}
-            <p className="font-dancing text-3xl sm:text-4xl text-[#761B3B] font-bold mb-5">
-              {loveLetter.salutation}
-            </p>
+        {/* Fullscreen Zoom Modal for Letter */}
+        {isZoomed && (
+          <div 
+            onClick={() => setIsZoomed(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/90 backdrop-blur-md animate-fadeIn select-none"
+          >
+            <button
+              onClick={() => setIsZoomed(false)}
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-lg hover:bg-pink-700 z-50"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-            {/* Letter Body Paragraphs */}
-            <div className="space-y-4 text-neutral-800 font-poppins text-sm sm:text-base leading-relaxed">
-              {loveLetter.paragraphs.map((p, idx) => (
-                <p key={idx} className="font-normal">
-                  {p}
-                </p>
-              ))}
-            </div>
-
-            {/* Signoff */}
-            <div className="mt-8 text-right">
-              <p className="font-dancing text-2xl sm:text-3xl text-[#761B3B] font-bold">
-                {loveLetter.signoff}
-              </p>
+            <div 
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-2xl max-h-[92vh] overflow-y-auto rounded-2xl p-2 bg-transparent"
+            >
+              <img
+                src={loveLetter.letterImage}
+                alt="Love letter full view"
+                className="w-full h-auto max-h-[90vh] object-contain rounded-xl shadow-2xl"
+              />
             </div>
           </div>
         )}
@@ -76,7 +101,7 @@ export const LoveLetter: React.FC<LoveLetterProps> = ({ onNext, onAudioPlayChang
         {/* Custom Voice Note Player (Integrated directly beneath letter) */}
         <VoiceNotePlayer onAudioPlayChange={onAudioPlayChange} />
 
-        {/* Animated melting face emoji & heart (matching video frame 24!) */}
+        {/* Animated melting face emoji & heart */}
         <div className="my-4 flex flex-col items-center select-none animate-pulse">
           <span className="text-4xl drop-shadow">🥰</span>
           <div className="flex gap-1 text-pink-500 mt-1">

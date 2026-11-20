@@ -92,6 +92,7 @@ export interface SurpriseConfig {
     salutation: string;
     paragraphs: string[];
     signoff: string;
+    letterImage: string;
   };
   voiceNote: {
     heading: string;
@@ -274,13 +275,14 @@ export const surpriseConfig: SurpriseConfig = {
     heading: "Gelhuu wrote you this...",
     salutation: "Hey Gelhii ❤️",
     paragraphs: [
-      "I don't think I tell you enough, but meeting you has been one of the best things that ever happened to me.",
-      "Thank you for being patient with me, making me smile, listening to me, and loving me even on the days I'm difficult.",
-      "No matter how busy life gets, I hope you always remember that you are my favourite person.",
-      "I love you more than words can ever explain.",
-      "Forever yours. ❤️",
+      "Just wanted to pause my day to remind you how much you mean to me. I know we live far away from each other, and I miss you so much every single moment.",
+      "I admire how hard you're studying in your college plus two science program, and I'm so proud of you. I'm also busy with my BTech second year, but you're always in my thoughts.",
+      "I can't wait until we can talk for hours until midnight again, catching up and dreaming together.",
+      "Even though miles are between us, I want you to know that I will always choose you, every single day, above everything else. I promise to work on our communication and not let silly fights get in the way.",
+      "You are my everything, and I love you more than words can say. Can't wait to see your beautiful smile again.",
     ],
-    signoff: "— Gelhuu ❤️",
+    signoff: "Name - gelhuuu....tamara ❤️",
+    letterImage: "/photos/love-letter.jpg",
   },
   voiceNote: {
     heading: "Hear What My Heart Says",
