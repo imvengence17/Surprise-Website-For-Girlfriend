@@ -53,5 +53,5 @@ Alternatively, you can deploy this project in 60 seconds for free to **Vercel** 
 3. To apply your voice note just record your voice enhance it and give it to your code editor
 4. Now you are ready to go
 5. Use vercel if needed to deploy 
-All texts, names, messages, photo captions, promises, and audio paths are centrally configured in:
+All texts, names, messages, photo captions, promise3.s, and audio paths are centrally configured in:
 `src/config/surpriseConfig.ts`
