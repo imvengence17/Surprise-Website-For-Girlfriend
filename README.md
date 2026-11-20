@@ -48,6 +48,10 @@ Alternatively, you can deploy this project in 60 seconds for free to **Vercel** 
 ---
 
 ## ⚙️ How to Personalize
-
+1. Give your AI code editor The zip of this repositry and address the required changes
+2. Upload all 8 photos and mention where to be used
+3. To apply your voice note just record your voice enhance it and give it to your code editor
+4. Now you are ready to go
+5. Use vercel if needed to deploy 
 All texts, names, messages, photo captions, promises, and audio paths are centrally configured in:
 `src/config/surpriseConfig.ts`
