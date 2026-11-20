@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #FFF4EF;
+    --soft-pink: #FFD6E2;
+    --primary-pink: #F45B91;
+    --dark-pink: #D92E70;
+    --cream: #FFF0D7;
+    --burgundy: #761B3B;
+    --deep-plum: #29132B;
+    --gold: #D8AF62;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFF4EF;
+    color: #29132B;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+  }
+}
+
+.font-great-vibes {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-dancing {
+  font-family: 'Dancing Script', cursive;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-caveat {
+  font-family: 'Caveat', cursive;
+}
+
+.font-sacramento {
+  font-family: 'Sacramento', cursive;
+}
+
+/* Custom romantic grid background (as in reference video frame 03) */
+.romantic-grid-bg {
+  background-color: #F45B91;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Paper texture effect for Love Letter */
+.paper-texture {
+  background-color: #ffffff;
+  background-image: radial-gradient(#f0e4dc 0.75px, transparent 0.75px), radial-gradient(#f0e4dc 0.75px, #ffffff 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* Header title stroke effect (Yellow text with dark/orange outline from video) */
+.video-title-stroke {
+  color: #FFE600;
+  -webkit-text-stroke: 1.5px #FF6B00;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Animations */
+@keyframes heart-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 15px rgba(244, 91, 145, 0.6));
+  }
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 25px rgba(244, 91, 145, 0.9));
+  }
+}
+
+.animate-heart-pulse {
+  animation: heart-pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 4s infinite ease-in-out;
+}
+
+@keyframes gift-bounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-8px) scale(1.02);
+  }
+  60% {
+    transform: translateY(0) scale(0.98);
+  }
+  80% {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+.animate-gift-bounce {
+  animation: gift-bounce 2.5s infinite ease-in-out;
+}
+
+@keyframes stamp-drop {
+  0% {
+    transform: scale(2.5) rotate(-25deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.95) rotate(-12deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(-15deg);
+    opacity: 1;
+  }
+}
+
+.animate-stamp {
+  animation: stamp-drop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Prevent text selection and unwanted scroll during canvas scratch */
+.scratch-canvas {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF4EF;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFD6E2;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F45B91;
+}
